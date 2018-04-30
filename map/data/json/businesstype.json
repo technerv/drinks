@@ -1,0 +1,98 @@
+[
+  {
+    "model": "map.businesstype",
+    "pk": 1,
+    "fields": {"name": "5 star",
+    "description": "5 star"
+  }},
+  {
+    "model": "map.businesstype",
+    "pk": 2,
+    "fields": {"name": "4 star",
+    "description": "4 star"
+  }},
+  {
+    "model": "map.businesstype",
+    "pk": 3,
+    "fields": {"name": "3 star",
+    "description": "3 star"
+  }},
+  {
+    "model": "map.businesstype",
+    "pk": 4,
+    "fields": {"name": "2 star",
+    "description": "2 star"
+  }},
+  {
+    "model": "map.businesstype",
+    "pk": 5,
+    "fields": {"name": "1 star",
+    "description": "1 star"
+  }},
+  {
+    "model": "map.businesstype",
+    "pk": 6,
+    "fields": {"name": "informal",
+    "description": "informal"
+  }},
+  {
+    "model": "map.businesstype",
+    "pk": 7,
+    "fields": {"name": "Bar Only",
+    "description": "Bar Only"
+  }},
+  {
+    "model": "map.businesstype",
+    "pk": 8,
+    "fields": {"name": "Bar and Restaurant",
+    "description": "Bar and Restaurant"
+  }},
+  {
+    "model": "map.businesstype",
+    "pk": 9,
+    "fields": {"name": "Bar,Restaurant  and Accommodation",
+    "description": "Bar,Restaurant  and Accommodation"
+  }},
+  {
+    "model": "map.businesstype",
+    "pk": 10,
+    "fields": {"name": "Wines and Spirits",
+    "description": "Wines and Spirits"
+  }},
+  {
+    "model": "map.businesstype",
+    "pk": 11,
+    "fields": {"name": "Pubs",
+    "description": "Pubs"
+  }},
+  {
+    "model": "map.businesstype",
+    "pk": 12,
+    "fields": {"name": "Keg Den",
+    "description": "Keg Den"
+  }},
+  {
+    "model": "map.businesstype",
+    "pk": 13,
+    "fields": {"name": "Boarding and Lodging",
+    "description": "Boarding and Lodging"
+  }},
+  {
+    "model": "map.businesstype",
+    "pk": 14,
+    "fields": {"name": "Hotels and Cafes",
+    "description": "Hotels and Cafes"
+  }},
+  {
+    "model": "map.businesstype",
+    "pk": 15,
+    "fields": {"name": "Clubs",
+    "description": "Clubs"
+  }},
+  {
+    "model": "map.businesstype",
+    "pk": 16,
+    "fields": {"name": "Guest House",
+    "description": "Guest House"
+  }}
+]

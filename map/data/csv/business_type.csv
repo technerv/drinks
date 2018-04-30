@@ -1,0 +1,17 @@
+model,pk,name,description
+map.businesstype,1,5 star,5 star
+map.businesstype,2,4 star,4 star
+map.businesstype,3,3 star,3 star
+map.businesstype,4,2 star,2 star
+map.businesstype,5,1 star,1 star
+map.businesstype,6,informal,informal
+map.businesstype,7,Bar Only,Bar Only
+map.businesstype,8,Bar and Restaurant,Bar and Restaurant
+map.businesstype,9,"Bar,Restaurant  and Accommodation","Bar,Restaurant  and Accommodation"
+map.businesstype,10,Wines and Spirits,Wines and Spirits
+map.businesstype,11,Pubs,Pubs
+map.businesstype,12,Keg Den,Keg Den
+map.businesstype,13,Boarding and Lodging,Boarding and Lodging
+map.businesstype,14,Hotels and Cafes,Hotels and Cafes
+map.businesstype,15,Clubs,Clubs
+map.businesstype,16,Guest House,Guest House

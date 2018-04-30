@@ -1,0 +1,32 @@
+[
+  {
+    "model": "map.landuse",
+    "pk": 1,
+    "fields": {"name": "Recreational",
+    "description": "Recreational"
+  }},
+  {
+    "model": "map.landuse",
+    "pk": 2,
+    "fields": {"name": "Transport",
+    "description": "Transport"
+  }},
+  {
+    "model": "map.landuse",
+    "pk": 3,
+    "fields": {"name": "Agriculture",
+    "description": "Agriculture"
+  }},
+  {
+    "model": "map.landuse",
+    "pk": 4,
+    "fields": {"name": "Residential",
+    "description": "Residential"
+  }},
+  {
+    "model": "map.landuse",
+    "pk": 5,
+    "fields": {"name": "Commercial",
+    "description": "Commercial"
+  }}
+]

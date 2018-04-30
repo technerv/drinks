@@ -1,0 +1,44 @@
+[
+  {
+    "model": "map.communityamenitytype",
+    "pk": 1,
+    "fields": {"name": "Pre school",
+    "description": "Pre school"
+  }},
+  {
+    "model": "map.communityamenitytype",
+    "pk": 2,
+    "fields": {"name": "Primary school",
+    "description": "Primary school"
+  }},
+  {
+    "model": "map.communityamenitytype",
+    "pk": 3,
+    "fields": {"name": "Secondary School",
+    "description": "Secondary School"
+  }},
+  {
+    "model": "map.communityamenitytype",
+    "pk": 4,
+    "fields": {"name": "University",
+    "description": "University"
+  }},
+  {
+    "model": "map.communityamenitytype",
+    "pk": 5,
+    "fields": {"name": "Church",
+    "description": "Church"
+  }},
+  {
+    "model": "map.communityamenitytype",
+    "pk": 6,
+    "fields": {"name": "Mosque",
+    "description": "Mosque"
+  }},
+  {
+    "model": "map.communityamenitytype",
+    "pk": 7,
+    "fields": {"name": "Hospital",
+    "description": "Hospital"
+  }}
+]

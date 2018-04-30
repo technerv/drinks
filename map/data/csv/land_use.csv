@@ -1,0 +1,6 @@
+model,pk,name,description
+map.landuse,1,Recreational,Recreational
+map.landuse,2,Transport,Transport
+map.landuse,3,Agriculture,Agriculture
+map.landuse,4,Residential,Residential
+map.landuse,5,Commercial,Commercial

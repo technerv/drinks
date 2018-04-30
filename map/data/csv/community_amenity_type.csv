@@ -1,0 +1,8 @@
+model,pk,name,description
+map.communityamenitytype,1,Pre school,Pre school
+map.communityamenitytype,2,Primary school,Primary school
+map.communityamenitytype,3,Secondary School,Secondary School
+map.communityamenitytype,4,University,University
+map.communityamenitytype,5,Church,Church
+map.communityamenitytype,6,Mosque,Mosque
+map.communityamenitytype,7,Hospital,Hospital
