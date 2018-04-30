@@ -1,42 +1,42 @@
 [
   {
-    "model": "map.communityamenitytype",
+    "model": "map.communityammenitytype",
     "pk": 1,
     "fields": {"name": "Pre school",
     "description": "Pre school"
   }},
   {
-    "model": "map.communityamenitytype",
+    "model": "map.communityammenitytype",
     "pk": 2,
     "fields": {"name": "Primary school",
     "description": "Primary school"
   }},
   {
-    "model": "map.communityamenitytype",
+    "model": "map.communityammenitytype",
     "pk": 3,
     "fields": {"name": "Secondary School",
     "description": "Secondary School"
   }},
   {
-    "model": "map.communityamenitytype",
+    "model": "map.communityammenitytype",
     "pk": 4,
     "fields": {"name": "University",
     "description": "University"
   }},
   {
-    "model": "map.communityamenitytype",
+    "model": "map.communityammenitytype",
     "pk": 5,
     "fields": {"name": "Church",
     "description": "Church"
   }},
   {
-    "model": "map.communityamenitytype",
+    "model": "map.communityammenitytype",
     "pk": 6,
     "fields": {"name": "Mosque",
     "description": "Mosque"
   }},
   {
-    "model": "map.communityamenitytype",
+    "model": "map.communityammenitytype",
     "pk": 7,
     "fields": {"name": "Hospital",
     "description": "Hospital"
