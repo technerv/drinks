@@ -1,10 +1,7 @@
 import sys,os
 import csv
 from django.contrib.gis.utils import LayerMapping
-from .models import Country
-from .models import County
-from .models import Scounty
-from .models import Ward, Business, CommunityAmmenity, CommunityAmmenityType, LandUse, BusinessType
+from .models import Country, County, Scounty, Ward, Business, CommunityAmmenity, CommunityAmmenityType, LandUse, BusinessType
 
 from django.core.management import call_command
 from StringIO import StringIO
@@ -108,7 +105,7 @@ def run(verbose=True):
     )
     com.save(strict=True, verbose=verbose)
 
-   dm = LayerMapping(
+    dm = LayerMapping(
         Scounty, subcounty_shp, subcounty_mapping,
         transform=False, encoding='iso-8859-1',
     )
@@ -136,4 +133,4 @@ def run(verbose=True):
         CommunityAmmenity, amenity_shp, amenity_mapping,
         transform=False, encoding='iso-8859-1',
     )
-    lcm.save(strict=True, verbose=verbose)
+    amenitymap.save(strict=True, verbose=verbose)

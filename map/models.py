@@ -13,7 +13,8 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.db.models.signals import pre_save
 from django.db.models import signals
-
+from Utilities import random_string_generator
+from slugify import slugify
 class Country(models.Model):
     gadmid = models.IntegerField()
     iso = models.CharField(max_length=5)
@@ -36,7 +37,7 @@ def country_pre_save(signal, instance, sender, **kwargs):
         if not instance.slug:
             fresh_slug = "{slug}-{randstr}".format(
                 slug=instance.co_name,
-                randstr=util.random_string_generator(size=4),
+                randstr=random_string_generator(size=4),
                 # id=instance.identification_code
             )
             slug = slugify(fresh_slug.lower())
@@ -46,7 +47,7 @@ def country_pre_save(signal, instance, sender, **kwargs):
                 count += 1
                 new_slug = "{slug}-{randstr}".format(
                 slug=instance.co_name,
-                randstr=util.random_string_generator(size=4),
+                randstr=random_string_generator(size=4),
                 # id=instance.identification_code
             )
             instance.slug = new_slug.lower()
@@ -88,7 +89,7 @@ def county_pre_save(signal, instance, sender, **kwargs):
         if not instance.slug:
             fresh_slug = "{slug}-{randstr}".format(
                 slug=instance.c_name,
-                randstr=util.random_string_generator(size=4),
+                randstr=random_string_generator(size=4),
                 # id=instance.identification_code
             )
             slug = slugify(fresh_slug.lower())
@@ -98,7 +99,7 @@ def county_pre_save(signal, instance, sender, **kwargs):
                 count += 1
                 new_slug = "{slug}-{randstr}".format(
                 slug=instance.c_name,
-                randstr=util.random_string_generator(size=4),
+                randstr=random_string_generator(size=4),
                 # id=instance.identification_code
             )
             instance.slug = new_slug.lower()
@@ -134,7 +135,7 @@ def scounty_pre_save(signal, instance, sender, **kwargs):
         if not instance.slug:
             fresh_slug = "{slug}-{county}-{randstr}".format(
                 slug=instance.sc_name,
-                randstr=util.random_string_generator(size=4),
+                randstr=random_string_generator(size=4),
                 county=instance.county.c_name
             )
             slug = slugify(fresh_slug.lower())
@@ -144,7 +145,7 @@ def scounty_pre_save(signal, instance, sender, **kwargs):
                 count += 1
                 new_slug = "{slug}-{county}-{randstr}".format(
                 slug=instance.sc_name,
-                randstr=util.random_string_generator(size=4),
+                randstr=random_string_generator(size=4),
                 county=instance.county.c_name
             )
             instance.slug = new_slug.lower()
@@ -182,7 +183,7 @@ def ward_pre_save(signal, instance, sender, **kwargs):
         if not instance.slug:
             fresh_slug = "{slug}-{scounty}-{randstr}".format(
                 slug=instance.ward_name,
-                randstr=util.random_string_generator(size=4),
+                randstr=random_string_generator(size=4),
                 scounty=instance.scounty.sc_name
             )
             slug = slugify(fresh_slug.lower())
@@ -192,55 +193,40 @@ def ward_pre_save(signal, instance, sender, **kwargs):
                 count += 1
                 new_slug = "{slug}-{scounty}-{randstr}".format(
                 slug=instance.ward_name,
-                randstr=util.random_string_generator(size=4),
+                randstr=random_string_generator(size=4),
                 scounty=instance.scounty.sc_name
             )
             instance.slug = new_slug.lower()
 signals.pre_save.connect(ward_pre_save, sender=Ward)
 
 class Business(models.Model):
-    name = models.CharField(max_length=45, blank=True, null=True)
+    name = models.CharField(max_length=255, blank=True, null=True)
     lat = models.FloatField()
     long = models.FloatField()
     geom = models.PointField(srid=4326)
     land_use = models.ForeignKey('LandUse',on_delete=models.CASCADE, blank=True, null=True)
     business_type = models.ForeignKey('BusinessType',on_delete=models.CASCADE, blank=True, null=True)
-
-    class Meta:
-        db_table = 'business'
-
-        def __str__(self):
-            return self.name
+    def __str__(self):
+        return self.name
 reversion.register(Business)
 class BusinessType(models.Model):
     name = models.CharField(max_length=45, blank=True, null=True)
     description = models.CharField(max_length=45, blank=True, null=True)
-
-    class Meta:
-        db_table = 'business_type'
-
-        def __str__(self):
-            return self.name
+    def __str__(self):
+        return self.name
 reversion.register(BusinessType)
 class CommunityAmmenity(models.Model):
-    name = models.CharField(max_length=45, blank=True, null=True)
+    name = models.CharField(max_length=255, blank=True, null=True)
     community_ammenity_type = models.ForeignKey('CommunityAmmenityType',on_delete=models.CASCADE, blank=True, null=True)
     lat = models.FloatField()
     long = models.FloatField()
     geom = models.PointField(srid=4326)
-    class Meta:
-        db_table = 'community_ammenity'
-
-        def __str__(self):
-            return self.name
+    def __str__(self):
+        return self.name
 reversion.register(CommunityAmmenity)
 class CommunityAmmenityType(models.Model):
     name = models.CharField(max_length=45, blank=True, null=True)
     description = models.CharField(max_length=45, blank=True, null=True)
-
-    class Meta:
-        db_table = 'community_ammenity_type'
-
     def __str__(self):
         return self.name
 reversion.register(CommunityAmmenityType)
@@ -249,25 +235,17 @@ class Incident(models.Model):
     number_of_people_involved = models.CharField(max_length=45, blank=True, null=True)
     number_of_injuries = models.CharField(max_length=45, blank=True, null=True)
     incident_type = models.ForeignKey('IncidentType',on_delete=models.CASCADE, blank=True, null=True)
-    lat = models.CharField(max_length=45, blank=True, null=True)
-    long = models.CharField(max_length=45, blank=True, null=True)
-    geom = models.CharField(max_length=45, blank=True, null=True)
+    lat = models.FloatField()
+    long = models.FloatField()
+    geom = models.PointField(srid=4326)
     description_of_incident = models.CharField(max_length=45, blank=True, null=True)
-    photo = models.CharField(max_length=45, blank=True, null=True)
-
-    class Meta:
-        db_table = 'incident'
-
+    photo = models.CharField(max_length=255, blank=True, null=True)
     def __str__(self):
         return self.incident_type__name
 reversion.register(Incident)
 class IncidentType(models.Model):
     name = models.CharField(max_length=45, blank=True, null=True)
     description = models.CharField(max_length=45, blank=True, null=True)
-
-    class Meta:
-        db_table = 'incident_type'
-
     def __str__(self):
         return self.name
 reversion.register(IncidentType)
@@ -275,9 +253,6 @@ reversion.register(IncidentType)
 class LandUse(models.Model):
     name = models.CharField(max_length=45, blank=True, null=True)
     description = models.CharField(max_length=45, blank=True, null=True)
-
-    class Meta:
-        db_table = 'land_use'
 
     def __str__(self):
         return self.name
