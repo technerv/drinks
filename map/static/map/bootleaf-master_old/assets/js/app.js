@@ -1,4 +1,4 @@
-var map, featureList, boroughSearch = [], theaterSearch = [], museumSearch = [];
+var map, featureList, boroughSearch = [], scountySearch = [],theaterSearch = [], museumSearch = [];
 
 $(window).resize(function() {
   sizeLayerControl();
@@ -29,6 +29,11 @@ $("#full-extent-btn").click(function() {
   return false;
 });
 
+$("#full-extent-btn").click(function() {
+  map.fitBounds(scountys.getBounds());
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
 $("#legend-btn").click(function() {
   $("#legendModal").modal("show");
   $(".navbar-collapse.in").collapse("hide");
@@ -95,7 +100,7 @@ function syncSidebar() {
   theaters.eachLayer(function (layer) {
     if (map.hasLayer(theaterLayer)) {
       if (map.getBounds().contains(layer.getLatLng())) {
-        $("#feature-list tbody").append('<tr class="feature-row" id="' + L.stamp(layer) + '" lat="' + layer.getLatLng().lat + '" lng="' + layer.getLatLng().lng + '"><td style="vertical-align: middle;"><img width="16" height="18" src="/static/map/bootleaf-master_old/assets/img/theater.png"></td><td class="feature-name">' + layer.feature.properties.NAME + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
+        $("#feature-list tbody").append('<tr class="feature-row" id="' + L.stamp(layer) + '" lat="' + layer.getLatLng().lat + '" lng="' + layer.getLatLng().lng + '"><td style="vertical-align: middle;"><img width="16" height="18" src="/static/map/bootleaf-master_old/assets/img/theater.png"></td><td class="feature-name">' + layer.feature.properties.name + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
       }
     }
   });
@@ -103,7 +108,7 @@ function syncSidebar() {
   museums.eachLayer(function (layer) {
     if (map.hasLayer(museumLayer)) {
       if (map.getBounds().contains(layer.getLatLng())) {
-        $("#feature-list tbody").append('<tr class="feature-row" id="' + L.stamp(layer) + '" lat="' + layer.getLatLng().lat + '" lng="' + layer.getLatLng().lng + '"><td style="vertical-align: middle;"><img width="16" height="18" src="/static/map/bootleaf-master_old/assets/img/museum.png"></td><td class="feature-name">' + layer.feature.properties.NAME + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
+        $("#feature-list tbody").append('<tr class="feature-row" id="' + L.stamp(layer) + '" lat="' + layer.getLatLng().lat + '" lng="' + layer.getLatLng().lng + '"><td style="vertical-align: middle;"><img width="16" height="18" src="/static/map/bootleaf-master_old/assets/img/museum.png"></td><td class="feature-name">' + layer.feature.properties.name + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
       }
     }
   });
@@ -152,7 +157,7 @@ var boroughs = L.geoJson(null, {
   },
   onEachFeature: function (feature, layer) {
     boroughSearch.push({
-      name: layer.feature.properties.BoroName,
+      name: layer.feature.properties.c_name,
       source: "Boroughs",
       id: L.stamp(layer),
       bounds: layer.getBounds()
@@ -161,6 +166,27 @@ var boroughs = L.geoJson(null, {
 });
 $.getJSON(countyurl, function (data) {
   boroughs.addData(data);
+});
+var scountys = L.geoJson(null, {
+  style: function (feature) {
+    return {
+      color: "yellow",
+      fill: false,
+      opacity: 1,
+      clickable: false
+    };
+  },
+  onEachFeature: function (feature, layer) {
+    scountySearch.push({
+      name: layer.feature.properties.sc_name,
+      source: "Scountys",
+      id: L.stamp(layer),
+      bounds: layer.getBounds()
+    });
+  }
+});
+$.getJSON(scountryurl, function (data) {
+  scountys.addData(data);
 });
 
 //Create a color dictionary based off of subway route_id
@@ -232,13 +258,13 @@ var theaters = L.geoJson(null, {
         iconAnchor: [12, 28],
         popupAnchor: [0, -25]
       }),
-      title: feature.properties.NAME,
+      title: feature.properties.name,
       riseOnHover: true
     });
   },
   onEachFeature: function (feature, layer) {
     if (feature.properties) {
-      var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Name</th><td>" + feature.properties.NAME + "</td></tr>" + "<tr><th>Phone</th><td>" + feature.properties.TEL + "</td></tr>" + "<tr><th>Address</th><td>" + feature.properties.ADDRESS1 + "</td></tr>" + "<tr><th>Website</th><td><a class='url-break' href='" + feature.properties.URL + "' target='_blank'>" + feature.properties.URL + "</a></td></tr>" + "<table>";
+      var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Name</th><td>" + feature.properties.name + "</td></tr>" + "<tr><th>Business Type</th><td>" + feature.properties.business_type + "</td></tr>" + "<tr><th>Land Use</th><td>" + feature.properties.land_use + "</td></tr>" + "<tr><th>Distant to closest social amenity</th><td><a class='url-break' href='#' target='_blank'>To Do</a></td></tr>" + "<table>";
       layer.on({
         click: function (e) {
           $("#feature-title").html(feature.properties.NAME);
@@ -249,8 +275,10 @@ var theaters = L.geoJson(null, {
       });
       $("#feature-list tbody").append('<tr class="feature-row" id="' + L.stamp(layer) + '" lat="' + layer.getLatLng().lat + '" lng="' + layer.getLatLng().lng + '"><td style="vertical-align: middle;"><img width="16" height="18" src="/static/map/bootleaf-master_old/assets/img/theater.png"></td><td class="feature-name">' + layer.feature.properties.NAME + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
       theaterSearch.push({
-        name: layer.feature.properties.NAME,
-        address: layer.feature.properties.ADDRESS1,
+        name: layer.feature.properties.name,
+        business_type: layer.feature.properties.business_type,
+        land_use: layer.feature.properties.land_use,
+
         source: "Theaters",
         id: L.stamp(layer),
         lat: layer.feature.geometry.coordinates[1],
@@ -275,25 +303,25 @@ var museums = L.geoJson(null, {
         iconAnchor: [12, 28],
         popupAnchor: [0, -25]
       }),
-      title: feature.properties.NAME,
+      title: feature.properties.name,
       riseOnHover: true
     });
   },
   onEachFeature: function (feature, layer) {
     if (feature.properties) {
-      var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Name</th><td>" + feature.properties.NAME + "</td></tr>" + "<tr><th>Phone</th><td>" + feature.properties.TEL + "</td></tr>" + "<tr><th>Address</th><td>" + feature.properties.ADRESS1 + "</td></tr>" + "<tr><th>Website</th><td><a class='url-break' href='" + feature.properties.URL + "' target='_blank'>" + feature.properties.URL + "</a></td></tr>" + "<table>";
+      var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Name</th><td>" + feature.properties.name + "</td></tr>" + "<tr><th>Community Amenity Type</th><td>" + feature.properties.community_amenity_type + "</td></tr>" + "<tr><th>Closest Distance To Alcohol Joints</th><td>To do</td></tr><table>";
       layer.on({
         click: function (e) {
-          $("#feature-title").html(feature.properties.NAME);
+          $("#feature-title").html(feature.properties.name);
           $("#feature-info").html(content);
           $("#featureModal").modal("show");
           highlight.clearLayers().addLayer(L.circleMarker([feature.geometry.coordinates[1], feature.geometry.coordinates[0]], highlightStyle));
         }
       });
-      $("#feature-list tbody").append('<tr class="feature-row" id="' + L.stamp(layer) + '" lat="' + layer.getLatLng().lat + '" lng="' + layer.getLatLng().lng + '"><td style="vertical-align: middle;"><img width="16" height="18" src="/static/map/bootleaf-master_old/assets/img/museum.png"></td><td class="feature-name">' + layer.feature.properties.NAME + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
+      $("#feature-list tbody").append('<tr class="feature-row" id="' + L.stamp(layer) + '" lat="' + layer.getLatLng().lat + '" lng="' + layer.getLatLng().lng + '"><td style="vertical-align: middle;"><img width="16" height="18" src="/static/map/bootleaf-master_old/assets/img/museum.png"></td><td class="feature-name">' + layer.feature.properties.name + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
       museumSearch.push({
-        name: layer.feature.properties.NAME,
-        address: layer.feature.properties.ADRESS1,
+        name: layer.feature.properties.name,
+        community_amenity_type: layer.feature.properties.community_amenity_type,
         source: "Museums",
         id: L.stamp(layer),
         lat: layer.feature.geometry.coordinates[1],
@@ -309,7 +337,7 @@ $.getJSON(amenityurl, function (data) {
 map = L.map("map", {
   zoom: 10,
   center: [40.702222, -73.979378],
-  layers: [cartoLight, boroughs, markerClusters, highlight],
+  layers: [cartoLight, boroughs,scountys, markerClusters, highlight],
   zoomControl: false,
   attributionControl: false
 });
@@ -422,8 +450,9 @@ var groupedOverlays = {
     "<img src='/static/map/bootleaf-master_old/assets/img/museum.png' width='24' height='28'>&nbsp;Museums": museumLayer
   },
   "Reference": {
-    "Boroughs": boroughs,
-    "Subway Lines": subwayLines
+    "Counties": boroughs,
+    "Sub Counties": scountys,
+//    "Subway Lines": subwayLines
   }
 };
 
@@ -463,6 +492,16 @@ $(document).one("ajaxStop", function () {
     },
     queryTokenizer: Bloodhound.tokenizers.whitespace,
     local: boroughSearch,
+    limit: 10
+  });
+
+  var scountysBH = new Bloodhound({
+    name: "Scountys",
+    datumTokenizer: function (d) {
+      return Bloodhound.tokenizers.whitespace(d.name);
+    },
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    local: scountySearch,
     limit: 10
   });
 
@@ -517,6 +556,7 @@ $(document).one("ajaxStop", function () {
     limit: 10
   });
   boroughsBH.initialize();
+  scountysBH.initialize();
   theatersBH.initialize();
   museumsBH.initialize();
   geonamesBH.initialize();
@@ -531,23 +571,30 @@ $(document).one("ajaxStop", function () {
     displayKey: "name",
     source: boroughsBH.ttAdapter(),
     templates: {
-      header: "<h4 class='typeahead-header'>Boroughs</h4>"
+      header: "<h4 class='typeahead-header'>Counties</h4>"
+    }
+  }, {
+    name: "Scountys",
+    displayKey: "name",
+    source: scountysBH.ttAdapter(),
+    templates: {
+      header: "<h4 class='typeahead-header'>Sub Counties</h4>"
     }
   }, {
     name: "Theaters",
     displayKey: "name",
     source: theatersBH.ttAdapter(),
     templates: {
-      header: "<h4 class='typeahead-header'><img src='/static/map/bootleaf-master_old/assets/img/theater.png' width='24' height='28'>&nbsp;Theaters</h4>",
-      suggestion: Handlebars.compile(["{{name}}<br>&nbsp;<small>{{address}}</small>"].join(""))
+      header: "<h4 class='typeahead-header'><img src='/static/map/bootleaf-master_old/assets/img/theater.png' width='24' height='28'>&nbsp;Businesses</h4>",
+      suggestion: Handlebars.compile(["{{name}}<br>&nbsp;<small>{{business_type}}</small>&nbsp;<small>{{land_use}}</small>"].join(""))
     }
   }, {
     name: "Museums",
     displayKey: "name",
     source: museumsBH.ttAdapter(),
     templates: {
-      header: "<h4 class='typeahead-header'><img src='/static/map/bootleaf-master_old/assets/img/museum.png' width='24' height='28'>&nbsp;Museums</h4>",
-      suggestion: Handlebars.compile(["{{name}}<br>&nbsp;<small>{{address}}</small>"].join(""))
+      header: "<h4 class='typeahead-header'><img src='/static/map/bootleaf-master_old/assets/img/museum.png' width='24' height='28'>&nbsp;Community Amenities</h4>",
+      suggestion: Handlebars.compile(["{{name}}<br>&nbsp;<small>{{community_amenity_type}}</small>"].join(""))
     }
   }, {
     name: "GeoNames",
@@ -558,6 +605,9 @@ $(document).one("ajaxStop", function () {
     }
   }).on("typeahead:selected", function (obj, datum) {
     if (datum.source === "Boroughs") {
+      map.fitBounds(datum.bounds);
+    }
+    if (datum.source === "Scountys") {
       map.fitBounds(datum.bounds);
     }
     if (datum.source === "Theaters") {
