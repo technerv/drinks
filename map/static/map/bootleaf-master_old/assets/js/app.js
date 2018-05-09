@@ -1,4 +1,4 @@
-var map, featureList, boroughSearch = [], scountySearch = [],theaterSearch = [], museumSearch = [];
+var map, featureList, boroughSearch = [], countrySearch = [], scountySearch = [], wardSearch = [], theaterSearch = [], museumSearch = [];
 
 $(window).resize(function() {
   sizeLayerControl();
@@ -30,10 +30,23 @@ $("#full-extent-btn").click(function() {
 });
 
 $("#full-extent-btn").click(function() {
+  map.fitBounds(countrys.getBounds());
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+
+$("#full-extent-btn").click(function() {
   map.fitBounds(scountys.getBounds());
   $(".navbar-collapse.in").collapse("hide");
   return false;
 });
+
+$("#full-extent-btn").click(function() {
+  map.fitBounds(wards.getBounds());
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+
 $("#legend-btn").click(function() {
   $("#legendModal").modal("show");
   $(".navbar-collapse.in").collapse("hide");
@@ -123,15 +136,15 @@ function syncSidebar() {
 
 /* Basemap Layers */
 var cartoLight = L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png", {
-  maxZoom: 19,
+  maxZoom: 50,
   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://cartodb.com/attributions">CartoDB</a>'
 });
 var usgsImagery = L.layerGroup([L.tileLayer("http://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}", {
-  maxZoom: 15,
+  maxZoom: 50,
 }), L.tileLayer.wms("http://raster.nationalmap.gov/arcgis/services/Orthoimagery/USGS_EROS_Ortho_SCALE/ImageServer/WMSServer?", {
-  minZoom: 16,
-  maxZoom: 19,
-  layers: "0",
+  minZoom: 20,
+  maxZoom: 50,
+//  layers: "0",
   format: 'image/jpeg',
   transparent: true,
   attribution: "Aerial Imagery courtesy USGS"
@@ -149,7 +162,7 @@ var highlightStyle = {
 var boroughs = L.geoJson(null, {
   style: function (feature) {
     return {
-      color: "black",
+      color: "green",
       fill: false,
       opacity: 1,
       clickable: false
@@ -167,10 +180,33 @@ var boroughs = L.geoJson(null, {
 $.getJSON(countyurl, function (data) {
   boroughs.addData(data);
 });
+
+var countrys = L.geoJson(null, {
+  style: function (feature) {
+    return {
+      color: "black",
+      fill: false,
+      opacity: 1,
+      clickable: false
+    };
+  },
+  onEachFeature: function (feature, layer) {
+    countrySearch.push({
+      name: layer.feature.properties.co_name,
+      source: "Countrys",
+      id: L.stamp(layer),
+      bounds: layer.getBounds()
+    });
+  }
+});
+$.getJSON(countryurl, function (data) {
+  countrys.addData(data);
+});
+
 var scountys = L.geoJson(null, {
   style: function (feature) {
     return {
-      color: "yellow",
+      color: "red",
       fill: false,
       opacity: 1,
       clickable: false
@@ -187,6 +223,28 @@ var scountys = L.geoJson(null, {
 });
 $.getJSON(scountryurl, function (data) {
   scountys.addData(data);
+});
+
+var wards = L.geoJson(null, {
+  style: function (feature) {
+    return {
+      color: "blue",
+      fill: false,
+      opacity: 10,
+      clickable: false
+    };
+  },
+  onEachFeature: function (feature, layer) {
+    wardSearch.push({
+      name: layer.feature.properties.sc_name,
+      source: "Wards",
+      id: L.stamp(layer),
+      bounds: layer.getBounds()
+    });
+  }
+});
+$.getJSON(wardurl, function (data) {
+  wards.addData(data);
 });
 
 //Create a color dictionary based off of subway route_id
@@ -337,9 +395,9 @@ $.getJSON(amenityurl, function (data) {
 map = L.map("map", {
   zoom: 10,
   center: [40.702222, -73.979378],
-  layers: [cartoLight, boroughs,scountys, markerClusters, highlight],
-  zoomControl: false,
-  attributionControl: false
+  layers: [cartoLight, boroughs,countrys, scountys, wards, markerClusters, highlight],
+  zoomControl: true,
+  attributionControl: true
 });
 
 /* Layer control listeners that allow for a single markerClusters layer */
@@ -391,7 +449,7 @@ var attributionControl = L.control({
 });
 attributionControl.onAdd = function (map) {
   var div = L.DomUtil.create("div", "leaflet-control-attribution");
-  div.innerHTML = "<span class='hidden-xs'>Developed by <a href='http://bryanmcbride.com'>bryanmcbride.com</a> | </span><a href='#' onclick='$(\"#attributionModal\").modal(\"show\"); return false;'>Attribution</a>";
+  div.innerHTML = "<span class='hidden-xs'>Developed by <a href='#'>EVANS GITHINJI SCT221-C014-0248/2015</a>";
   return div;
 };
 map.addControl(attributionControl);
@@ -446,12 +504,14 @@ var baseLayers = {
 
 var groupedOverlays = {
   "Points of Interest": {
-    "<img src='/static/map/bootleaf-master_old/assets/img/theater.png' width='24' height='28'>&nbsp;Theaters": theaterLayer,
-    "<img src='/static/map/bootleaf-master_old/assets/img/museum.png' width='24' height='28'>&nbsp;Museums": museumLayer
+    "<img src='/static/map/bootleaf-master_old/assets/img/theater.png' width='24' height='28'>&nbsp;Businesses": theaterLayer,
+    "<img src='/static/map/bootleaf-master_old/assets/img/museum.png' width='24' height='28'>&nbsp;Community Amenities": museumLayer
   },
   "Reference": {
-    "Counties": boroughs,
-    "Sub Counties": scountys,
+    "County": boroughs,
+    "Country": countrys,
+    "Sub County": scountys,
+    "Wards": wards,
 //    "Subway Lines": subwayLines
   }
 };
@@ -495,6 +555,16 @@ $(document).one("ajaxStop", function () {
     limit: 10
   });
 
+var countrysBH = new Bloodhound({
+    name: "Countrys",
+    datumTokenizer: function (d) {
+      return Bloodhound.tokenizers.whitespace(d.name);
+    },
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    local: countrySearch,
+    limit: 10
+  });
+
   var scountysBH = new Bloodhound({
     name: "Scountys",
     datumTokenizer: function (d) {
@@ -502,6 +572,16 @@ $(document).one("ajaxStop", function () {
     },
     queryTokenizer: Bloodhound.tokenizers.whitespace,
     local: scountySearch,
+    limit: 10
+  });
+
+    var wardsBH = new Bloodhound({
+    name: "Wards",
+    datumTokenizer: function (d) {
+      return Bloodhound.tokenizers.whitespace(d.name);
+    },
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    local: wardSearch,
     limit: 10
   });
 
@@ -556,7 +636,9 @@ $(document).one("ajaxStop", function () {
     limit: 10
   });
   boroughsBH.initialize();
+  countrysBH.initialize();
   scountysBH.initialize();
+  wardsBH.initialize();
   theatersBH.initialize();
   museumsBH.initialize();
   geonamesBH.initialize();
@@ -574,11 +656,25 @@ $(document).one("ajaxStop", function () {
       header: "<h4 class='typeahead-header'>Counties</h4>"
     }
   }, {
+    name: "Countrys",
+    displayKey: "name",
+    source: countrysBH.ttAdapter(),
+    templates: {
+      header: "<h4 class='typeahead-header'>Country</h4>"
+    }
+  },{
     name: "Scountys",
     displayKey: "name",
     source: scountysBH.ttAdapter(),
     templates: {
       header: "<h4 class='typeahead-header'>Sub Counties</h4>"
+    }
+  },{
+    name: "Wards",
+    displayKey: "name",
+    source: wardsBH.ttAdapter(),
+    templates: {
+      header: "<h4 class='typeahead-header'>Wards</h4>"
     }
   }, {
     name: "Theaters",
@@ -607,7 +703,13 @@ $(document).one("ajaxStop", function () {
     if (datum.source === "Boroughs") {
       map.fitBounds(datum.bounds);
     }
+    if (datum.source === "Countrys") {
+      map.fitBounds(datum.bounds);
+    }
     if (datum.source === "Scountys") {
+      map.fitBounds(datum.bounds);
+    }
+    if (datum.source === "Wards") {
       map.fitBounds(datum.bounds);
     }
     if (datum.source === "Theaters") {

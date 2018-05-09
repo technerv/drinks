@@ -18,8 +18,9 @@ def ward_data(request):
     return JsonResponse(serializer.data)
 def country_data(request):
     country = Country.objects.filter(id=1)
-    serializer = CountrySerializer(country,many=True)
+    serializer = CountrySerializer(country, many=True)
     return JsonResponse(serializer.data)
+
 def county_data(request):
     county = County.objects.filter(id=18985)
     serializer = CountySerializer(county,many=True)

@@ -1,0 +1,553 @@
+<!doctype html>
+{% load staticfiles%}
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>AN INTERACTIVE GIS WEB APPLICATION TOOL FOR MANAGEMENT OF ALCOHOL SELLING ENTITIES</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="{% static 'presentation/reveal.js/css/reveal.css' %}">
+		<link rel="stylesheet" href="{% static 'presentation/reveal.js/css/theme/black.css' %}" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="{% static 'presentation/reveal.js/lib/css/zenburn.css' %}">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>FINAL YEAR PROJECT</h1>
+
+				</section>
+
+				<section>
+					<h2>PROJECT TITLE</h2>
+					<h3>AN INTERACTIVE GIS WEB APPLICATION TOOL FOR MANAGEMENT OF ALCOHOL SELLING ENTITIES</h3>
+					<p>
+						<small>Created by <a href="#">Evans Githinji</a> SCT221-C014-0248/2015</small>
+					</p>
+
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section>
+						<h2>Background of the study</h2>
+						<p>Eldoret city has a cosmopolitan and urban population of approximately 289,380. With a steady rise in corresponding economic growth, it has led to the explosion of population in the city’s residential estates and the proliferation of many bars, wines and spirits and illicit brew dens to cater for the different economic capabilities of consumers.</p>
+						<br>
+						<a href="#" class="navigate-down">
+							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+						</a>
+					</section>
+					<section>
+						<h2>Background of the study</h2>
+						<p>Because of this, access to alcohol has been made easy even
+to school going children and idle jobless youth. The
+presence of alcohol joints near roads also poses risks to
+road users. The easy access means that matatu drivers and
+bodaboda drivers can take alcohol posing risks.</p>
+					</section>
+					<section>
+						<h2>Background of the study</h2>
+						<p>This study undertakes to map visualize and categorize all
+alcohol joints within our residential estates. It also seeks to
+establish whether these places are observing the law.</p>
+						<br>
+						<a href="#/2">
+							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
+						</a>
+					</section>
+				</section>
+
+				<section>
+					<h2>Problem Statement</h2>
+					<p><ul>
+					<li>Alcoholism has permeated all classes of
+human society, from the lowly paid to the rich.</li>
+					<li>To make matters worse, alcohol selling
+business has moved from towns to estates. As
+a consequence, Kenyans are taking alcohol
+since it is readily available in estates.</li>
+					<li>Kids also get exposed to alcohol at an early
+age.</li>
+				</ul><br>
+<br>
+
+					</p>
+				</section>
+
+				<section>
+					<h2>Main objective</h2>
+					<p>
+						Collect GPS data and map all legal and illegal
+alcohol joints within Eldoret estates of Maili
+Nne, Huruma, Road Block, Mwanzo, Langas,
+Action, Annex.
+					</p>
+				</section>
+
+				<section>
+					<h2>Specific Objectives</h2>
+					<p>
+					<ul>
+					<li>Produce soft and hard copy maps showing location of alcohol selling entities.</li>
+					<li>Determine the concentration of alcohol selling entities given the population density per square kilometer.</li>
+
+				</ul>
+
+					</p>
+				</section>
+				<section>
+					<h2>Limitations</h2>
+					<p>
+					<ul>
+					<li>Collection of daily supply and consumption data from the business
+entities is hampered by lack of appropriate law which would have
+been critical in alcohol consumption prediction modeling.</li>
+					<li> Hostile reception by illicit dens will hamper the collection of gps
+locations.</li>
+				</ul>
+
+					</p>
+				</section>
+				<section>
+					<h2>Limitations</h2>
+					<p>
+					<ul>
+					<li>Accurate and updated population data is unavailable, since the last
+census was held 8 years ago. This data is critical to determine the
+maximum allowed alcohol selling entities given for a unit of
+population density per square kilometer.
+</li>
+					<li>The collection GPS locations depend on smartphones or specialized
+gps devices which are expensive, and which require an internet
+connection to submit data to the server hosting the application.</li>
+
+				</ul>
+
+					</p>
+				</section>
+<section>
+					<h2>Benefits</h2>
+					<p>
+					<ul>
+					<li>Since it is a web application, it can be accessed anywhere, anytime. </li>
+					<li>The system is cost effective since it is built on free and open source software.</li>
+					<li> The availability of the tool can provide a framework which other applications can be built upon.</li>
+					<li>GIS web applications support real time spatial analysis of data.</li>
+					<li>Compliance reports can be collected by county government based on data collected.</li>
+				</ul>
+
+					</p>
+				</section>
+				<section>
+					<h2>Methodology</h2>
+					<p>
+					<ul>
+					<li>The Interactive GIS Web Application Tool will adopt the
+Iterative model, where software is built in small
+chunks, each time adding more functions to it. You can
+implement a small set of software requirements, then
+test, evaluate and refine the requirements. </li>
+					<li>With each iteration, new requirements are added and a
+new version of the software is produced. This process
+is repeated until the application is fully developed and
+all requirements implemented.</li>
+				</ul>
+
+					</p>
+				</section>
+				<section>
+					<h2>Methodology</h2>
+					<p>
+					<ul>
+					<li>One advantage of Iterative model is that we get a
+working version of the application early in the process
+and so it less expensive to implement changes. </li>
+
+				</ul>
+
+					</p>
+				</section>
+				<section>
+					<h2>Hardware Requirements</h2>
+					<p>
+					<ul>
+					<li>Intel Core i3 computer or above with 500GB hard disk, 4GB RAM, DVD ROM.</li>
+					<li>Garmin GPS Tracker for marking and tracking cordinates and waypoints.</li>
+				</ul>
+
+					</p>
+				</section>
+				<section>
+					<h2>Software requirements</h2>
+					<p>
+					<ul>
+					<li>Ubuntu Linux 16.04 operating system</li>
+					<li>QGis</li>
+					<li>Pip</li>
+					<li>Django</li>
+					<li>Java Open Street Map Editor</li>
+					<li>PyCharm (Python Editor and Console)</li>
+					<li>GeoDjango Module Framework</li>
+					<li>PostgreSQL for storing database information </li>
+				</ul>
+					</p>
+				</section>
+				<section>
+					<h2>Functional requirements</h2>
+					<p>
+					<ul>
+					<li>Monitoring module: The availability of an interactive web visualization tool will enable agencies to
+monitor and analyze the proliferation of alcohol joints. </li>
+					<li>Administrator Module: This is the backend administration where different users will be assigned to
+manage and manipulate data that is viewed on the map.</li>
+
+				</ul>
+					</p>
+				</section>
+<section>
+					<h2>Functional requirements</h2>
+					<p>
+					<ul>
+					<li>Reports Module: Produce soft and hard copy maps showing location of alcohol selling entities.</li>
+					<li>Location View Module: This tool will enable agencies to monitor and analyze the proliferation of
+alcohol joints. Those agencies will know the exact locations of these alcohol
+joints, so that in case of breach of law, they can be punished. It will also
+enable help provide legal locations during provision of permits and licenses to
+new business owners.</li>
+				</ul>
+					</p>
+				</section
+
+
+				<section data-markdown>
+					<script type="text/template">
+						## Markdown support
+
+						Write content using inline or external Markdown.
+						Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
+
+						```
+						<section data-markdown>
+						  ## Markdown support
+
+						  Write content using inline or external Markdown.
+						  Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
+						</section>
+						```
+					</script>
+				</section>
+
+				<section>
+					<section id="fragments">
+						<h2>Fragments</h2>
+						<p>Hit the next arrow...</p>
+						<p class="fragment">... to step through ...</p>
+						<p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span class="fragment">slide.</span></p>
+
+						<aside class="notes">
+							This slide has fragments which are also stepped through in the notes window.
+						</aside>
+					</section>
+					<section>
+						<h2>Fragment Styles</h2>
+						<p>There's different types of fragments, like:</p>
+						<p class="fragment grow">grow</p>
+						<p class="fragment shrink">shrink</p>
+						<p class="fragment fade-out">fade-out</p>
+						<p class="fragment fade-up">fade-up (also down, left and right!)</p>
+						<p class="fragment current-visible">current-visible</p>
+						<p>Highlight <span class="fragment highlight-red">red</span> <span class="fragment highlight-blue">blue</span> <span class="fragment highlight-green">green</span></p>
+					</section>
+				</section>
+
+				<section id="transitions">
+					<h2>Transition Styles</h2>
+					<p>
+						You can select from different transitions, like: <br>
+						<a href="?transition=none#/transitions">None</a> -
+						<a href="?transition=fade#/transitions">Fade</a> -
+						<a href="?transition=slide#/transitions">Slide</a> -
+						<a href="?transition=convex#/transitions">Convex</a> -
+						<a href="?transition=concave#/transitions">Concave</a> -
+						<a href="?transition=zoom#/transitions">Zoom</a>
+					</p>
+				</section>
+
+				<section id="themes">
+					<h2>Themes</h2>
+					<p>
+						reveal.js comes with a few themes built in: <br>
+						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
+					</p>
+				</section>
+
+				<section>
+					<section data-background="#dddddd">
+						<h2>Slide Backgrounds</h2>
+						<p>
+							Set <code>data-background="#dddddd"</code> on a slide to change the background color. All CSS color formats are supported.
+						</p>
+						<a href="#" class="navigate-down">
+							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+						</a>
+					</section>
+					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
+						<h2>Image Backgrounds</h2>
+						<pre><code class="hljs">&lt;section data-background="image.png"&gt;</code></pre>
+					</section>
+					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png" data-background-repeat="repeat" data-background-size="100px">
+						<h2>Tiled Backgrounds</h2>
+						<pre><code class="hljs" style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
+					</section>
+					<section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-color="#000000">
+						<div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
+							<h2>Video Backgrounds</h2>
+							<pre><code class="hljs" style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
+						</div>
+					</section>
+					<section data-background="http://i.giphy.com/90F8aUepslB84.gif">
+						<h2>... and GIFs!</h2>
+					</section>
+				</section>
+
+				<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+					<h2>Background Transitions</h2>
+					<p>
+						Different background transitions are available via the backgroundTransition option. This one's called "zoom".
+					</p>
+					<pre><code class="hljs">Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
+				</section>
+
+				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+					<h2>Background Transitions</h2>
+					<p>
+						You can override background transitions per-slide.
+					</p>
+					<pre><code class="hljs" style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
+				</section>
+
+				<section>
+					<h2>Pretty Code</h2>
+					<pre><code class="hljs" data-trim contenteditable>
+function linkify( selector ) {
+  if( supports3DTransforms ) {
+
+    var nodes = document.querySelectorAll( selector );
+
+    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
+      var node = nodes[i];
+
+      if( !node.className ) {
+        node.className += ' roll';
+      }
+    }
+  }
+}
+					</code></pre>
+					<p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
+				</section>
+
+				<section>
+					<h2>Marvelous List</h2>
+					<ul>
+						<li>No order here</li>
+						<li>Or here</li>
+						<li>Or here</li>
+						<li>Or here</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Fantastic Ordered List</h2>
+					<ol>
+						<li>One is smaller than...</li>
+						<li>Two is smaller than...</li>
+						<li>Three!</li>
+					</ol>
+				</section>
+
+				<section>
+					<h2>Tabular Tables</h2>
+					<table>
+						<thead>
+							<tr>
+								<th>Item</th>
+								<th>Value</th>
+								<th>Quantity</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Apples</td>
+								<td>$1</td>
+								<td>7</td>
+							</tr>
+							<tr>
+								<td>Lemonade</td>
+								<td>$2</td>
+								<td>18</td>
+							</tr>
+							<tr>
+								<td>Bread</td>
+								<td>$3</td>
+								<td>2</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+					<h2>Clever Quotes</h2>
+					<p>
+						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">The nice thing about standards is that there are so many to choose from</q> and block:
+					</p>
+					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
+						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
+					</blockquote>
+				</section>
+
+				<section>
+					<h2>Intergalactic Interconnections</h2>
+					<p>
+						You can link between slides internally,
+						<a href="#/2/3">like this</a>.
+					</p>
+				</section>
+
+				<section>
+					<h2>Speaker View</h2>
+					<p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
+					<p>Press the <em>S</em> key to try it out.</p>
+
+					<aside class="notes">
+						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+					</aside>
+				</section>
+
+				<section>
+					<h2>Export to PDF</h2>
+					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, here's an example:</p>
+					<iframe data-src="https://www.slideshare.net/slideshow/embed_code/42840540" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+				</section>
+
+				<section>
+					<h2>Global State</h2>
+					<p>
+						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
+						will be added as a class to the document element when the slide is open. This lets you
+						apply broader style changes, like switching the page background.
+					</p>
+				</section>
+
+				<section data-state="customevent">
+					<h2>State Events</h2>
+					<p>
+						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
+					</p>
+					<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
+Reveal.addEventListener( 'customevent', function() {
+	console.log( '"customevent" has fired' );
+} );
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Take a Moment</h2>
+					<p>
+						Press B or . on your keyboard to pause the presentation. This is helpful when you're on stage and want to take distracting slides off the screen.
+					</p>
+				</section>
+
+				<section>
+					<h2>Much more</h2>
+					<ul>
+						<li>Right-to-left support</li>
+						<li><a href="https://github.com/hakimel/reveal.js#api">Extensive JavaScript API</a></li>
+						<li><a href="https://github.com/hakimel/reveal.js#auto-sliding">Auto-progression</a></li>
+						<li><a href="https://github.com/hakimel/reveal.js#parallax-background">Parallax backgrounds</a></li>
+						<li><a href="https://github.com/hakimel/reveal.js#keyboard-bindings">Custom keyboard bindings</a></li>
+					</ul>
+				</section>
+
+				<section style="text-align: left;">
+					<h1>THE END</h1>
+					<p>
+						- <a href="https://slides.com">Try the online editor</a> <br>
+						- <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
+					</p>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="{% static 'presentation/reveal.js/lib/js/head.min.js' %}"></script>
+		<script src="{% static 'presentation/reveal.js/js/reveal.js' %}"></script>
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: '/static/presentation/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '/static/presentation/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '/static/presentation/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '/static/presentation/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '/static/presentation/reveal.js/plugin/search/search.js', async: true },
+					{ src: '/static/presentation/reveal.js/plugin/zoom-js/zoom.js', async: true },
+					{ src: '/static/presentation/reveal.js/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
