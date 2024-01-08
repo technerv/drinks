@@ -1,7 +1,6 @@
-from models import *
+from map.models import *
 from rest_framework import serializers
 from rest_framework_gis.serializers import GeoFeatureModelSerializer
-
 
 class CountrySerializer(GeoFeatureModelSerializer):
     class Meta:
@@ -46,6 +45,7 @@ class BusinessSerializer(GeoFeatureModelSerializer):
         geo_field = "geom"
         id_field = False
         fields = ('name', 'land_use','business_type')
+
 class CommunityAmmenitySerializer(GeoFeatureModelSerializer):
     community_ammenity_type = serializers.StringRelatedField()
     class Meta:

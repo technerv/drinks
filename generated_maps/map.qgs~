@@ -15,7 +15,7 @@
     <layer-tree-layer expanded="1" checked="Qt::Unchecked" id="newward20180509155837013" name="newward">
       <customproperties/>
     </layer-tree-layer>
-    <layer-tree-layer expanded="1" checked="Qt::Checked" id="UGsubcounties20180509160252181" name="UGsubcounties">
+    <layer-tree-layer expanded="1" checked="Qt::Unchecked" id="UGsubcounties20180509160252181" name="UGsubcounties">
       <customproperties/>
     </layer-tree-layer>
     <layer-tree-layer expanded="1" checked="Qt::Unchecked" id="subcounty20180509155819022" name="subcounty">
@@ -95,9 +95,9 @@
         <legendlayerfile isInOverview="0" layerid="newward20180509155837013" visible="0"/>
       </filegroup>
     </legendlayer>
-    <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="UGsubcounties" showFeatureCount="0">
+    <legendlayer drawingOrder="-1" open="true" checked="Qt::Unchecked" name="UGsubcounties" showFeatureCount="0">
       <filegroup open="true" hidden="false">
-        <legendlayerfile isInOverview="0" layerid="UGsubcounties20180509160252181" visible="1"/>
+        <legendlayerfile isInOverview="0" layerid="UGsubcounties20180509160252181" visible="0"/>
       </filegroup>
     </legendlayer>
     <legendlayer drawingOrder="-1" open="true" checked="Qt::Unchecked" name="subcounty" showFeatureCount="0">
@@ -146,7 +146,7 @@
       <ComposerLabel valign="128" marginX="1" marginY="1" labelText="U. G COUNTY ALCOHOL SELLING ENTITIES AND COMMUNITY AMINITIES MAP" htmlState="0" halign="4">
         <LabelFont description="Noto Sans,20,-1,5,75,1,0,0,0,0"/>
         <FontColor red="0" blue="0" green="0"/>
-        <ComposerItem pagey="4.58598" page="1" id="" lastValidViewScaleFactor="-1" positionMode="0" positionLock="false" x="15.2866" y="4.58598" visibility="1" zValue="6" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="268.535" outlineWidth="0.3" excludeFromExports="0" uuid="{594cd841-57db-448a-a69d-0de0a6a01ae6}" height="15.0336" itemRotation="0" frame="false" pagex="15.2866">
+        <ComposerItem pagey="4.58598" page="1" id="" lastValidViewScaleFactor="-1" positionMode="0" positionLock="false" x="15.2866" y="4.58598" visibility="1" zValue="9" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="268.535" outlineWidth="0.3" excludeFromExports="0" uuid="{594cd841-57db-448a-a69d-0de0a6a01ae6}" height="15.0336" itemRotation="0" frame="false" pagex="15.2866">
           <FrameColor alpha="255" red="0" blue="0" green="0"/>
           <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
         </ComposerItem>
@@ -154,13 +154,13 @@
       <ComposerLabel valign="128" marginX="1" marginY="1" labelText="North" htmlState="0" halign="4">
         <LabelFont description="Noto Sans,14,-1,5,75,1,0,0,0,0"/>
         <FontColor red="0" blue="0" green="0"/>
-        <ComposerItem pagey="165.412" page="1" id="" lastValidViewScaleFactor="-1" positionMode="0" positionLock="false" x="15.2866" y="165.412" visibility="1" zValue="5" background="false" transparency="0" frameJoinStyle="miter" blendMode="5" width="39.2356" outlineWidth="0.3" excludeFromExports="0" uuid="{1cf3e176-c73b-40b1-880d-0349baa979fc}" height="7.13374" itemRotation="0" frame="false" pagex="15.2866">
+        <ComposerItem pagey="165.412" page="1" id="" lastValidViewScaleFactor="-1" positionMode="0" positionLock="false" x="15.2866" y="165.412" visibility="1" zValue="8" background="false" transparency="0" frameJoinStyle="miter" blendMode="5" width="39.2356" outlineWidth="0.3" excludeFromExports="0" uuid="{1cf3e176-c73b-40b1-880d-0349baa979fc}" height="7.13374" itemRotation="0" frame="false" pagex="15.2866">
           <FrameColor alpha="255" red="0" blue="0" green="0"/>
           <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
         </ComposerItem>
       </ComposerLabel>
       <ComposerPicture resizeMode="0" pictureRotation="0" pictureWidth="23.949" file="/usr/share/qgis/svg/arrows/Arrow_05.svg" pictureHeight="23.949" mapId="0" anchorPoint="0">
-        <ComposerItem pagey="172.546" page="1" id="" lastValidViewScaleFactor="-1" positionMode="0" positionLock="false" x="21.4012" y="172.546" visibility="1" zValue="4" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="27.0063" outlineWidth="0.3" excludeFromExports="0" uuid="{dad4a024-00b4-4540-9539-ad174fcfe1e6}" height="23.949" itemRotation="0" frame="false" pagex="21.4012">
+        <ComposerItem pagey="172.546" page="1" id="" lastValidViewScaleFactor="-1" positionMode="0" positionLock="false" x="21.4012" y="172.546" visibility="1" zValue="7" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="27.0063" outlineWidth="0.3" excludeFromExports="0" uuid="{dad4a024-00b4-4540-9539-ad174fcfe1e6}" height="23.949" itemRotation="0" frame="false" pagex="21.4012">
           <FrameColor alpha="255" red="0" blue="0" green="0"/>
           <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
           <dataDefinedSource expr="" field="" active="false" useExpr="true"/>
@@ -360,10 +360,10 @@
         <multilineenabled fieldname="" on=""/>
         <selectedonly on=""/>
       </labelattributes>
-      <editform>.</editform>
+      <editform></editform>
       <editforminit/>
       <featformsuppress>0</featformsuppress>
-      <annotationform>.</annotationform>
+      <annotationform></annotationform>
       <editorlayout>generatedlayout</editorlayout>
       <excludeAttributesWMS/>
       <excludeAttributesWFS/>
@@ -499,10 +499,10 @@
         <multilineenabled fieldname="" on=""/>
         <selectedonly on=""/>
       </labelattributes>
-      <editform>.</editform>
+      <editform></editform>
       <editforminit/>
       <featformsuppress>0</featformsuppress>
-      <annotationform>.</annotationform>
+      <annotationform></annotationform>
       <editorlayout>generatedlayout</editorlayout>
       <excludeAttributesWMS/>
       <excludeAttributesWFS/>
@@ -638,10 +638,10 @@
         <multilineenabled fieldname="" on=""/>
         <selectedonly on=""/>
       </labelattributes>
-      <editform>.</editform>
+      <editform></editform>
       <editforminit/>
       <featformsuppress>0</featformsuppress>
-      <annotationform>.</annotationform>
+      <annotationform></annotationform>
       <editorlayout>generatedlayout</editorlayout>
       <excludeAttributesWMS/>
       <excludeAttributesWFS/>
@@ -777,10 +777,10 @@
         <multilineenabled fieldname="" on=""/>
         <selectedonly on=""/>
       </labelattributes>
-      <editform>.</editform>
+      <editform></editform>
       <editforminit/>
       <featformsuppress>0</featformsuppress>
-      <annotationform>.</annotationform>
+      <annotationform></annotationform>
       <editorlayout>generatedlayout</editorlayout>
       <excludeAttributesWMS/>
       <excludeAttributesWFS/>
@@ -907,10 +907,10 @@
         <multilineenabled fieldname="" on=""/>
         <selectedonly on=""/>
       </labelattributes>
-      <editform>.</editform>
+      <editform></editform>
       <editforminit/>
       <featformsuppress>0</featformsuppress>
-      <annotationform>.</annotationform>
+      <annotationform></annotationform>
       <editorlayout>generatedlayout</editorlayout>
       <excludeAttributesWMS/>
       <excludeAttributesWFS/>
@@ -1167,10 +1167,10 @@
         <multilineenabled fieldname="" on=""/>
         <selectedonly on=""/>
       </labelattributes>
-      <editform>.</editform>
+      <editform></editform>
       <editforminit/>
       <featformsuppress>0</featformsuppress>
-      <annotationform>.</annotationform>
+      <annotationform></annotationform>
       <editorlayout>generatedlayout</editorlayout>
       <excludeAttributesWMS/>
       <excludeAttributesWFS/>
@@ -1430,10 +1430,10 @@
         <multilineenabled fieldname="" on=""/>
         <selectedonly on=""/>
       </labelattributes>
-      <editform>.</editform>
+      <editform></editform>
       <editforminit/>
       <featformsuppress>0</featformsuppress>
-      <annotationform>.</annotationform>
+      <annotationform></annotationform>
       <editorlayout>generatedlayout</editorlayout>
       <excludeAttributesWMS/>
       <excludeAttributesWFS/>
@@ -1693,10 +1693,10 @@
         <multilineenabled fieldname="" on=""/>
         <selectedonly on=""/>
       </labelattributes>
-      <editform>.</editform>
+      <editform></editform>
       <editforminit/>
       <featformsuppress>0</featformsuppress>
-      <annotationform>.</annotationform>
+      <annotationform></annotationform>
       <editorlayout>generatedlayout</editorlayout>
       <excludeAttributesWMS/>
       <excludeAttributesWFS/>
@@ -1811,10 +1811,10 @@
         <multilineenabled fieldname="" on=""/>
         <selectedonly on=""/>
       </labelattributes>
-      <editform>.</editform>
+      <editform></editform>
       <editforminit/>
       <featformsuppress>0</featformsuppress>
-      <annotationform>.</annotationform>
+      <annotationform></annotationform>
       <editorlayout>generatedlayout</editorlayout>
       <excludeAttributesWMS/>
       <excludeAttributesWFS/>
@@ -1929,10 +1929,10 @@
         <multilineenabled fieldname="" on=""/>
         <selectedonly on=""/>
       </labelattributes>
-      <editform>.</editform>
+      <editform></editform>
       <editforminit/>
       <featformsuppress>0</featformsuppress>
-      <annotationform>.</annotationform>
+      <annotationform></annotationform>
       <editorlayout>generatedlayout</editorlayout>
       <excludeAttributesWMS/>
       <excludeAttributesWFS/>

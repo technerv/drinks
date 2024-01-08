@@ -136,15 +136,15 @@ function syncSidebar() {
 
 /* Basemap Layers */
 var cartoLight = L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png", {
-  maxZoom: 19,
+  maxZoom: 50,
   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://cartodb.com/attributions">CartoDB</a>'
 });
 var usgsImagery = L.layerGroup([L.tileLayer("http://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}", {
-  maxZoom: 15,
+  maxZoom: 50,
 }), L.tileLayer.wms("http://raster.nationalmap.gov/arcgis/services/Orthoimagery/USGS_EROS_Ortho_SCALE/ImageServer/WMSServer?", {
-  minZoom: 16,
-  maxZoom: 19,
-  layers: "0",
+  minZoom: 20,
+  maxZoom: 50,
+//  layers: "0",
   format: 'image/jpeg',
   transparent: true,
   attribution: "Aerial Imagery courtesy USGS"
@@ -396,8 +396,8 @@ map = L.map("map", {
   zoom: 10,
   center: [40.702222, -73.979378],
   layers: [cartoLight, boroughs,countrys, scountys, wards, markerClusters, highlight],
-  zoomControl: false,
-  attributionControl: false
+  zoomControl: true,
+  attributionControl: true
 });
 
 /* Layer control listeners that allow for a single markerClusters layer */

@@ -13,7 +13,7 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.db.models.signals import pre_save
 from django.db.models import signals
-from Utilities import random_string_generator
+from map.Utilities import random_string_generator
 from slugify import slugify
 class Country(models.Model):
     gadmid = models.IntegerField()
@@ -52,7 +52,6 @@ def country_pre_save(signal, instance, sender, **kwargs):
             )
             instance.slug = new_slug.lower()
 signals.pre_save.connect(country_pre_save, sender=Country)
-
 
 
 reversion.register(Country)
@@ -110,8 +109,8 @@ class ScountyManager(models.Manager):
     def get_by_natural_key(self, c_name):
         return self.get(c_name=c_name )
 
-
 reversion.register(County)
+
 class Scounty(models.Model):
     objects = ScountyManager()
     county = models.ForeignKey(County, on_delete=models.CASCADE,related_name='subcounties')
@@ -209,12 +208,14 @@ class Business(models.Model):
     def __str__(self):
         return self.name
 reversion.register(Business)
+
 class BusinessType(models.Model):
     name = models.CharField(max_length=45, blank=True, null=True)
     description = models.CharField(max_length=45, blank=True, null=True)
     def __str__(self):
         return self.name
 reversion.register(BusinessType)
+
 class CommunityAmmenity(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     community_ammenity_type = models.ForeignKey('CommunityAmmenityType',on_delete=models.CASCADE, blank=True, null=True)
@@ -224,6 +225,7 @@ class CommunityAmmenity(models.Model):
     def __str__(self):
         return self.name
 reversion.register(CommunityAmmenity)
+
 class CommunityAmmenityType(models.Model):
     name = models.CharField(max_length=45, blank=True, null=True)
     description = models.CharField(max_length=45, blank=True, null=True)

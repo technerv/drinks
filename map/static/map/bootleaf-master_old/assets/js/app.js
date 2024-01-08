@@ -322,7 +322,7 @@ var theaters = L.geoJson(null, {
   },
   onEachFeature: function (feature, layer) {
     if (feature.properties) {
-      var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Name</th><td>" + feature.properties.name + "</td></tr>" + "<tr><th>Business Type</th><td>" + feature.properties.business_type + "</td></tr>" + "<tr><th>Land Use</th><td>" + feature.properties.land_use + "</td></tr>" + "<tr><th>Distant to closest social amenity</th><td><a class='url-break' href='#' target='_blank'>To Do</a></td></tr>" + "<table>";
+      var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Name</th><td>" + feature.properties.name + "</td></tr>" + "<tr><th>Business Type</th><td>" + feature.properties.business_type + "</td></tr>" + "<tr><th>Land Use</th><td>" + feature.properties.land_use + "</td></tr>" + "<table>";
       layer.on({
         click: function (e) {
           $("#feature-title").html(feature.properties.NAME);
@@ -367,7 +367,7 @@ var museums = L.geoJson(null, {
   },
   onEachFeature: function (feature, layer) {
     if (feature.properties) {
-      var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Name</th><td>" + feature.properties.name + "</td></tr>" + "<tr><th>Community Amenity Type</th><td>" + feature.properties.community_amenity_type + "</td></tr>" + "<tr><th>Closest Distance To Alcohol Joints</th><td>To do</td></tr><table>";
+      var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Name</th><td>" + feature.properties.name + "</td></tr>" + "<tr><th>Community Amenity Type</th><td>" + feature.properties.community_amenity_type + "</td></tr>" + "<table>";
       layer.on({
         click: function (e) {
           $("#feature-title").html(feature.properties.name);
@@ -449,7 +449,7 @@ var attributionControl = L.control({
 });
 attributionControl.onAdd = function (map) {
   var div = L.DomUtil.create("div", "leaflet-control-attribution");
-  div.innerHTML = "<span class='hidden-xs'>Developed by <a href='#'>EVANS GITHINJI SCT221-C014-0248/2015</a>";
+  div.innerHTML = "<span class='hidden-xs'>Developed by <a href='http://technerv.com'>EVANS GITHINJI</a>";
   return div;
 };
 map.addControl(attributionControl);

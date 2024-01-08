@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.contrib.gis import admin
-from models import *
+from map.models import *
 
 # Register your models here.
 admin.site.register(Country, admin.OSMGeoAdmin)
@@ -16,4 +16,3 @@ admin.site.register(CommunityAmmenityType, admin.ModelAdmin)
 admin.site.register(Incident, admin.OSMGeoAdmin)
 admin.site.register(IncidentType, admin.ModelAdmin)
 admin.site.register(LandUse, admin.ModelAdmin)
-
